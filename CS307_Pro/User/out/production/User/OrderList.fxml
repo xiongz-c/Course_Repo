@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderListController">
+   <children>
+      <Button layoutX="474.0" layoutY="14.0" mnemonicParsing="false" onAction="#cancel" text="取消订单">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Label layoutX="32.0" layoutY="20.0" text="请选择您要取消的订单">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutY="114.0" prefHeight="305.0" prefWidth="638.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="89.0" text="订单编号" />
+          <TableColumn fx:id="train_id" prefWidth="87.0" text="动车车次" />
+            <TableColumn fx:id="start_station" text="出发站" />
+            <TableColumn fx:id="end_station" prefWidth="99.0" text="到达站" />
+            <TableColumn fx:id="price" prefWidth="82.0" text="价格" />
+            <TableColumn fx:id="user" prefWidth="112.0" text="使用人" />
+            <TableColumn fx:id="statue" prefWidth="88.0" text="订单状态" />
+        </columns>
+      </TableView>
+      <Button layoutX="368.0" layoutY="21.0" mnemonicParsing="false" onAction="#back" text="返回上一页" />
+      <Button layoutX="474.0" layoutY="66.0" mnemonicParsing="false" onAction="#pay" text="付款">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button layoutX="368.0" layoutY="73.0" mnemonicParsing="false" onAction="#detail" text="详细信息" />
+   </children>
+</AnchorPane>

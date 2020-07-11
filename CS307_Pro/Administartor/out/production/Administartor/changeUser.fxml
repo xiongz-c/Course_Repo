@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="changeUserController">
+    <children>
+        <Label layoutX="79.0" layoutY="34.0" text="请选择您要查询的用户：">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <TableView fx:id="table" layoutY="86.0" prefHeight="315.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="phone" prefWidth="132.0" text="手机号" />
+                <TableColumn fx:id="id" prefWidth="136.0" text="身份证号" />
+                <TableColumn fx:id="name" prefWidth="108.0" text="姓名" />
+                <TableColumn fx:id="password" prefWidth="222.0" text="密码" />
+            </columns>
+        </TableView>
+        <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#quit" prefHeight="27.0" prefWidth="45.0" text="退出" />
+      <TextField fx:id="get_phone" layoutX="343.0" layoutY="35.0" promptText="手机号" />
+      <Button layoutX="516.0" layoutY="35.0" mnemonicParsing="false" onAction="#search" text="确认查询" />
+    </children>
+</AnchorPane>

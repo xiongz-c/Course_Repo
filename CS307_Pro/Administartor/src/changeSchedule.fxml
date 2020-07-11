@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="changeSchedule">
+   <children>
+      <Label layoutX="50.0" layoutY="102.0" text="添加行程表">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="149.0" text="修改行程表">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="filePath" layoutX="181.0" layoutY="102.0" prefHeight="27.0" prefWidth="239.0" promptText="请在这里输入行程表文件地址" />
+      <TableView fx:id="table" layoutY="189.0" prefHeight="211.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="date" prefWidth="140.0" text="日期" />
+          <TableColumn fx:id="train_id" prefWidth="130.0" text="车次" />
+            <TableColumn fx:id="start_station" minWidth="0.0" prefWidth="164.0" text="始发站" />
+            <TableColumn fx:id="end_station" minWidth="6.0" prefWidth="165.0" text="终点站" />
+        </columns>
+      </TableView>
+      <Button layoutX="477.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleChange" text="确认选择的车次" />
+      <Button layoutX="446.0" layoutY="103.0" mnemonicParsing="false" onAction="#addSchedule" text="确认添加" />
+      <Label layoutX="57.0" layoutY="27.0" text="32106">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <TextField fx:id="search_date" layoutX="181.0" layoutY="150.0" prefHeight="27.0" prefWidth="96.0" promptText="Date" />
+      <TextField fx:id="search_train" layoutX="291.0" layoutY="150.0" prefHeight="28.0" prefWidth="96.0" promptText="train_id" />
+      <Button layoutX="405.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleSearch" text="查找" />
+      <Button layoutX="477.0" layoutY="27.0" mnemonicParsing="false" onAction="#back" text="返回主界面" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('star.jpg');" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateCountController">
+   <children>
+      <Label layoutX="127.0" layoutY="104.0" prefHeight="23.0" prefWidth="51.0" text="账号" textFill="#37e813" AnchorPane.bottomAnchor="273.0" AnchorPane.topAnchor="104.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="164.0" text="密码" textFill="#0fda20">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="224.0" text="确认密码" textFill="#1ce819">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="phone" layoutX="220.0" layoutY="102.0" prefHeight="27.0" prefWidth="183.0" promptText="Input your phone number here" />
+      <PasswordField fx:id="pass1" layoutX="220.0" layoutY="161.0" prefHeight="27.0" prefWidth="183.0" promptText="Input your password here" />
+      <PasswordField fx:id="pass2" layoutX="220.0" layoutY="221.0" prefHeight="27.0" prefWidth="183.0" promptText="Repaet your password here" />
+      <Button layoutX="202.0" layoutY="297.0" mnemonicParsing="false" onAction="#create" prefHeight="23.0" prefWidth="196.0" text="注册" textFill="#2f1dd7">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <RadioButton fx:id="read" layoutX="127.0" layoutY="263.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="169.0" text="我已阅读并同意用户协定" textFill="#19e40f" textOverrun="CLIP" />
+      <Button layoutX="477.0" layoutY="303.0" mnemonicParsing="false" onAction="#cancel" text="不注册" />
+      <Label fx:id="wrongPhone" layoutX="202.0" layoutY="129.0" text="You input the wrong format of phone number" textFill="#f5f111" visible="false" />
+      <Label fx:id="repeatAgain" layoutX="151.0" layoutY="248.0" text="The password you input is not equal to the password before" textFill="#cff20a" visible="false" />
+      <Label fx:id="Readtheyaoqiu" layoutX="309.0" layoutY="265.0" text="Please chose this one" textFill="#f1f508" visible="false" />
+      <Label fx:id="wrongPassword" layoutX="183.0" layoutY="192.0" text="The password you input must be longger than 8" textFill="#f2f203" visible="false" />
+   </children>
+</AnchorPane>

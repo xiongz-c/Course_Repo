@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChangeDetail">
+   <children>
+      <TableView fx:id="table" layoutY="148.0" prefHeight="249.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="station_name" prefWidth="106.0" text="车站名" />
+          <TableColumn fx:id="arrive_time" prefWidth="135.0" text="到达时间" />
+            <TableColumn fx:id="leave_time" prefWidth="126.0" text="离开时间" />
+            <TableColumn fx:id="date" prefWidth="120.0" text="日期" />
+            <TableColumn fx:id="train_id" prefWidth="112.0" text="车次" />
+        </columns>
+      </TableView>
+      <Button layoutX="476.0" layoutY="105.0" mnemonicParsing="false" onAction="#delete" text="删除此经停车站" />
+      <Label layoutX="43.0" layoutY="14.0" text="车站经停表">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="494.0" layoutY="15.0" mnemonicParsing="false" onAction="#back" text="返回上一页" />
+      <TextField fx:id="adder_name" layoutX="14.0" layoutY="60.0" prefHeight="27.0" prefWidth="90.0" promptText="车站名" />
+      <TextField fx:id="adder_arrive_time" layoutX="120.0" layoutY="60.0" prefHeight="27.0" prefWidth="109.0" promptText="到达时间" />
+      <TextField fx:id="adder_leave_time" layoutX="246.0" layoutY="60.0" prefHeight="27.0" prefWidth="109.0" promptText="离开时间" />
+      <TextField fx:id="adder_date" layoutX="375.0" layoutY="60.0" prefHeight="27.0" prefWidth="90.0" promptText="日期" />
+      <Button layoutX="496.0" layoutY="60.0" mnemonicParsing="false" onAction="#addStation" text="增加车站" />
+   </children>
+</AnchorPane>

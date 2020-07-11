@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateStation">
+   <children>
+      <Label layoutX="44.0" layoutY="27.0" text="增加新车站">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="adder_name" layoutX="104.0" layoutY="113.0" />
+      <TextField fx:id="adder_code" layoutX="104.0" layoutY="160.0" />
+      <TextField fx:id="adder_city" layoutX="350.0" layoutY="113.0" />
+      <Label layoutX="58.0" layoutY="216.0" text="查找车站">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="118.0" text="名称" />
+      <Label layoutX="281.0" layoutY="118.0" text="所在城市" />
+      <Label layoutX="45.0" layoutY="165.0" text="编码" />
+      <Button layoutX="445.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleCreate" text="确认添加" />
+      <Label layoutX="47.0" layoutY="255.0" text="名称" />
+      <TextField fx:id="search_name" layoutX="108.0" layoutY="250.0" />
+      <Button layoutX="350.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleSearch" text="查找" />
+      <TableView fx:id="table" layoutX="-2.0" layoutY="285.0" prefHeight="116.0" prefWidth="606.0">
+        <columns>
+          <TableColumn fx:id="station_name" prefWidth="181.0" text="名称" />
+          <TableColumn fx:id="station_city" prefWidth="214.0" text="所在城市" />
+            <TableColumn fx:id="station_code" prefWidth="210.0" text="编码" />
+        </columns>
+      </TableView>
+      <Button layoutX="454.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" text="返回上一页" />
+   </children>
+</AnchorPane>

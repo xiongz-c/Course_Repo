@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('star.jpg');" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+   <children>
+      <Label layoutX="239.0" layoutY="27.0" prefHeight="108.0" prefWidth="125.0" style="-fx-background-image: url('logo.jpeg');" />
+      <PasswordField fx:id="passwordField" layoutX="204.0" layoutY="213.0" prefHeight="33.0" prefWidth="193.0" promptText="Password" />
+      <Button layoutX="206.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="27.0" prefWidth="193.0" text="Sign in" />
+      <Button layoutX="206.0" layoutY="321.0" mnemonicParsing="false" onAction="#handleCreate" prefHeight="27.0" prefWidth="193.0" text="Create Account Now" />
+      <TextField fx:id="Phone" layoutX="204.0" layoutY="158.0" prefHeight="33.0" prefWidth="193.0" promptText="Phone Number" />
+      <Label fx:id="failed" layoutX="173.0" layoutY="246.0" text="登陆失败，请检查电话号码或者密码是否正确" textFill="#fc0303" visible="false" />
+   </children>
+</AnchorPane>

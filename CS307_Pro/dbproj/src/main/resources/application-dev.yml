@@ -1,0 +1,28 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /32106
+spring:
+  datasource:
+    url: jdbc:postgresql:// # <ip>:<port>/<database>
+    username: <username>
+    password: <password>
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 120000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: update #if use create, we will build new table and clean all the date.
+    open-in-view: false
+    show-sql: true

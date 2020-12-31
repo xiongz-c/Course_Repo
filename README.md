@@ -1,2 +1,2 @@
-# Projs_repo
-本菜鸡在萨斯泰科已提交的课程项目源码
+# Sustech_Code_Lib
+一些课程作业和项目代码

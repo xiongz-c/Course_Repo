@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 先引入 Vue -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <title>movie</title>
+</head>
+<body>
+<div id="app" >
+    <div style="text-align: center;color: #70DB93 "><h1>Movie List</h1></div>
+    <el-table
+
+            :data="tableData"
+            style="text-align:center"
+            max-height="250">
+        <el-table-column
+                fixed
+                prop="name"
+                label="Title"
+                width="200">
+        </el-table-column>
+        <el-table-column
+                prop="date"
+                label="Date">
+        </el-table-column>
+        <el-table-column
+                prop="time"
+                label="Start Time">
+        </el-table-column>
+        <el-table-column
+                prop="duration"
+                label="Duration">
+        </el-table-column>
+        <el-table-column
+                prop="address"
+                label="Movie Hall">
+        </el-table-column>
+        <el-table-column
+                prop="price"
+                label="Price">
+        </el-table-column>
+        <el-table-column
+                prop="type"
+                label="Type">
+        </el-table-column>
+        <el-table-column
+                fixed="right"
+                label="operator"
+                width="90">
+            <template slot-scope="scope">
+                <el-button
+                        @click.native.prevent="deleteRow(scope.$index, tableData)"
+                        type="text"
+                        size="small">
+                    Remove
+                </el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+
+    <div style="text-align: center">
+        <el-button type="primary" @click="dialogFormVisible = true">add movie<i
+                class="el-icon-upload el-icon--right"></i></el-button>
+    </div>
+
+
+    <el-dialog title="Add movie" :visible.sync="dialogFormVisible">
+        <el-form label-width="100px" :model="form" :rules="rules" ref="form">
+            <el-form-item label="Title" prop="name">
+                <el-input v-model="form.name" autocomplete="off" style="width: 300px;"></el-input>
+            </el-form-item>
+            <el-form-item label="Movie Hall" prop="address">
+                <el-select v-model="form.address" placeholder="Choose Movie Hall">
+                    <el-option label="1" value="1"></el-option>
+                    <el-option label="2" value="2"></el-option>
+                    <el-option label="3" value="3"></el-option>
+                    <el-option label="4" value="4"></el-option>
+                    <el-option label="5" value="5"></el-option>
+                    <el-option label="6" value="6"></el-option>
+                    <el-option label="7" value="7"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="Date" prop="date">
+                <el-col :span="11">
+                    <el-date-picker type="date" placeholder="choose date" v-model="form.date"
+                                    style="width: 100%;"></el-date-picker>
+                </el-col>
+            </el-form-item>
+            <el-form-item label="Time" prop="time">
+                <el-col :span="11">
+                    <el-time-picker placeholder="choose start time" v-model="form.time"
+                                    style="width: 100%;" format="HH:mm"></el-time-picker>
+                </el-col>
+            </el-form-item>
+            <el-form-item label="Duration" prop="duration">
+                <el-col :span="11">
+                    <el-input v-model.number="form.duration"></el-input>
+                </el-col>
+            </el-form-item>
+            <el-form-item label="Price" prop="price">
+                <el-col :span="11">
+                    <el-input v-model="form.price"></el-input>
+                </el-col>
+            </el-form-item>
+            <el-form-item label="Type" prop="type">
+                <el-col :span="14">
+                    <el-radio-group v-model="form.type">
+                        <el-radio label="Three D"></el-radio>
+                        <el-radio label="Ordinary"></el-radio>
+                    </el-radio-group>
+                </el-col>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="resetForm('form')">Reset</el-button>
+            <el-button @click="resetForm('form') , dialogFormVisible = false ">Cancel</el-button>
+            <el-button type="primary" @click="submitForm('form'), dialogFormVisible = false ">Submit</el-button>
+        </div>
+
+    </el-dialog>
+</div>
+</body>
+
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: function () {
+            Date.prototype.format = function (fmt) {
+                var o = {
+                    "M+": this.getMonth() + 1, //月份
+                    "d+": this.getDate(), //日
+                    "h+": this.getHours(), //小时
+                    "m+": this.getMinutes(), //分
+                    "s+": this.getSeconds(), //秒
+                    "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+                    "S": this.getMilliseconds() //毫秒
+                };
+                if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                for (var k in o)
+                    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                return fmt;
+            }
+            var between30and300 = (rule, value, callback) => {
+                if (Number.isInteger(Number(value)) && Number(value) >= 30 && Number(value) <= 300) {
+                    callback();
+                } else {
+                    callback(new Error('Invalid input'));
+                }
+            };
+            var checkDate = (rule, value, callback) => {
+                if (new Date(value) < new Date()) {
+                    return callback(new Error('the date must be later than today'));
+                } else {
+                    callback();
+                }
+            };
+            var validatePrice = (rule, value, callback) => {
+                value = value + ''
+                if (!value) {
+                    callback(new Error('price must not be null'));
+                } else if (value.split('.').length > 2) {
+                    callback(new Error('invalid price')); //防止输入多个小数点
+                } else if (Number(value) < 0) {
+                    callback(new Error('price must not smaller than zero'));
+                } else {
+                    value = Math.round(value * Math.pow(10, 1)) / Math.pow(10, 1); //四舍五入
+                    value = Number(value).toFixed(1); //不足补位
+                    this.form.price = value;
+                    callback();
+                }
+            };
+            var typeCheck = (rule, value, callback) => {
+                for (d in this.tableData) {
+                    var dd = this.tableData[d]
+                    if (dd['name'] === this.form['name'] && dd['address'] === this.form['address']) {
+                        if (dd['type'] !== value) {
+                            callback(new Error('error type'));
+                        } else {
+                            callback();
+                        }
+                    }
+                }
+                callback();
+            };
+            return {
+                tableData: [{
+                    name: 'The Angry Birds Movie',
+                    date: '2020-10-01',
+                    time: '08:55',
+                    duration: '115',
+                    address: '1',
+                    price: 40.5,
+                    type: 'Ordinary'
+                }, {
+                    name: 'Beauty and the Beast',
+                    date: '2020-10-10',
+                    time: '10:20',
+                    duration: '120',
+                    address: '7',
+                    price: 55.5,
+                    type: 'Three D'
+                }],
+                dialogFormVisible: false,
+                form: {
+                    name: 'testMovie',
+                    date: '',
+                    time: '',
+                    duration: 123,
+                    address: "1",
+                    price: 123,
+                    type: "Ordinary"
+                },
+
+                rules: {
+                    name: [
+                        {required: true, message: 'Please input the movie title', trigger: 'blur'}
+                    ],
+                    date: [
+                        {type: 'date', required: true, message: 'Please choose the date', trigger: 'blur'},
+                        {validator: checkDate, required: true, message: 'must be later than today', trigger: 'blur'},
+                    ],
+                    time: [
+                        {required: true, message: 'Please choose the movie time', trigger: 'blur'}
+
+                    ],
+                    duration: [
+                        {type: 'number', required: true, message: 'Please input number', trigger: 'blur'},
+
+                        {
+                            validator: between30and300,
+                            message: 'Duration time must Integer and between 30~300',
+                            trigger: 'blur'
+                        }
+                    ],
+                    price: [
+                        // {type: 'number', required: true, message: 'Please input number', trigger: 'blur'},
+                        {
+                            validator: validatePrice, required: true,
+                            message: 'Please input positive number', trigger: 'blur'
+                        },
+                    ],
+                    address: [
+                        {required: true, message: 'Please choose movie hall', trigger: 'change'}
+                    ],
+                    type: [
+                        {required: true, message: 'Please choose movie type', trigger: 'blur'},
+                        {validator: typeCheck, message: 'Type error', trigger: 'blur'}
+                    ]
+                },
+                formLabelWidth: '100px'
+            }
+        },
+        methods: {
+            deleteRow(index, rows) {
+                rows.splice(index, 1)
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    // console.log(this.form)
+                    if (valid) {
+                        this.form["date"] = this.form["date"].format("yyyy-MM-dd")
+                        this.form["time"] = this.form["time"].format("hh:mm")
+                        this.tableData.push(JSON.parse(JSON.stringify(this.form)));
+                        this.form = {
+                            name: 'testMovie',
+                                date: '',
+                                time: '',
+                                duration: '',
+                                address: '',
+                                price: '',
+                                type: ''
+                        }
+
+                        // console.log(this.form)
+                        alert('do you want to submit?');
+                    } else {
+                        console.log('error submit!!');
+                        alert('submit failed!');
+                        return false;
+                    }
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
+        },
+    });
+</script>
+</html>
